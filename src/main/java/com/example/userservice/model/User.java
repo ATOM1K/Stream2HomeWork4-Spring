@@ -1,5 +1,6 @@
 package com.example.userservice.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,12 +13,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Уникальный идентификатор пользователя", example = "1")
     private Long id;
 
     @Column(name = "name", nullable = false)
+    @Schema(description = "Имя пользователя", example = "John Doe")
     private String name;
 
     @Column(name = "email", nullable = false, unique = true)
+    @Schema(description = "Email пользователя", example = "john@example.com")
     private String email;
 
     @CreationTimestamp
